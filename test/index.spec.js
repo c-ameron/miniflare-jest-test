@@ -1,8 +1,8 @@
-import fetch from "@/index";
+import { handleRequest } from "@/index";
 
-test("should redirect to example page on no route match", async () => {
+test("Should get Hello World", async () => {
     const env = getMiniflareBindings();
-    const res = await fetch(new Request("http://localhost"), env);
+    const res = await handleRequest(new Request("http://localhost"), env);
     expect(res.status).toBe(200);
     expect(await res.text()).toBe("Hello World!");
   });
